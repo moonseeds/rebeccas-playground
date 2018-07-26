@@ -1,14 +1,15 @@
-<h2>The app-create component</h2>
-
 <mat-card>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="enteredTitle">
+  </mat-form-field>
   <mat-form-field>
     <!--[value]=""  targets the value property of underlying object and bind the value between the ""  to it it is now not normal text
   but typescript code. If you enter normal text it wont work you'll have to enter values or methods eg newPost . To output values as a string you have to wrap
   them in '' eg [value]="'Test'" will output test text to the screen-->
-    <textarea matInput rows="6" [value]="newPost" [(ngModel)]="enteredValue"></textarea>
+    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
   </mat-form-field>
   <button mat-raised-button color="accent" (click)="onAddPost()">Save Post</button>
 </mat-card>
 <!-- String interpolation  {{refer to something belonging to the ts eg. method or property name}} -->
-<p>{{ newPost }}</p>
+<!--<p>{{ newPost }}</p>-->
 

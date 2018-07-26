@@ -3,6 +3,6 @@
   margin-top: 16px;
 }
 
-textarea, mat-form-field {
-  width: 100%;
+.info-text {
+  text-align: center;
 }

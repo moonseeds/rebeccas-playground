@@ -1,0 +1,12 @@
+<!--using *ngIf the expansion panels will only show if the expression is true-->
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <!--*ngFor is a loop that will add the amount of panels needed. let post => creates a new variable and uses that to get/set data from posts array in the
+  typescript file-->
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      {{post.title}}
+    </mat-expansion-panel-header>
+    <p>{{post.content}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-2" *ngIf="posts.length <= 0">No posts added yet!</p>
