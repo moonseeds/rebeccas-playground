@@ -1,15 +1,32 @@
-<mat-card>
-  <mat-form-field>
-    <input matInput type="text" [(ngModel)]="enteredTitle">
-  </mat-form-field>
-  <mat-form-field>
-    <!--[value]=""  targets the value property of underlying object and bind the value between the ""  to it it is now not normal text
-  but typescript code. If you enter normal text it wont work you'll have to enter values or methods eg newPost . To output values as a string you have to wrap
-  them in '' eg [value]="'Test'" will output test text to the screen-->
-    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
-  </mat-form-field>
-  <button mat-raised-button color="accent" (click)="onAddPost()">Save Post</button>
-</mat-card>
-<!-- String interpolation  {{refer to something belonging to the ts eg. method or property name}} -->
-<!--<p>{{ newPost }}</p>-->
+<!--<mat-card>-->
+  <!--<mat-form-field>-->
+    <!--<input matInput type="text" [(ngModel)]="enteredTitle">-->
+  <!--</mat-form-field>-->
+  <!--<mat-form-field>-->
+    <!--&lt;!&ndash;[value]=""  targets the value property of underlying object and bind the value between the ""  to it it is now not normal text-->
+  <!--but typescript code. If you enter normal text it wont work you'll have to enter values or methods eg newPost . To output values as a string you have to wrap-->
+  <!--them in '' eg [value]="'Test'" will output test text to the screen&ndash;&gt;-->
+    <!--<textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>-->
+  <!--</mat-form-field>-->
+  <!--<button mat-raised-button color="accent" (click)="onAddPost()">Save Post</button>-->
+<!--</mat-card>-->
+<!--&lt;!&ndash; String interpolation  {{refer to something belonging to the ts eg. method or property name}} &ndash;&gt;-->
+<!--&lt;!&ndash;<p>{{ newPost }}</p>&ndash;&gt;-->
 
+
+
+
+<mat-card>
+  <!--when using a form you don't need two-way binding. As it will auto create a js form behind the scenes.-->
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" name="title" ngModel required minlength="3" #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="4" name="content" ngModel required #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please some content</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">Save Post</button>
+  </form>
+</mat-card>
