@@ -32,5 +32,6 @@ export class PostCreateComponent {
     // emits the post as an arguement
     // this.postCreated.emit(post);
     this.postsService.addPost(form.value.title, form.value.content);
+    form.resetForm();
   }
 }
